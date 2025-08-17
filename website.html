@@ -11,6 +11,7 @@
       padding: 0;
       box-sizing: border-box;
       font-family: 'Roboto', sans-serif;
+      scroll-behavior: smooth; /* smooth scrolling */
     }
 
     body {
@@ -22,7 +23,7 @@
     header {
       background: #fff;
       border-bottom: 2px solid #e6e6e6;
-      padding: 10px 50px;
+      padding: 10px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -32,7 +33,12 @@
     }
 
     header img {
-      height: 60px;
+      height: 50px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
     }
 
     nav ul {
@@ -52,6 +58,23 @@
       color: #b89b2d;
     }
 
+    /* Hamburger menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: #111;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    /* Hero Section */
     .hero {
       background: url("banner.jpg") center/cover no-repeat;
       height: 80vh;
@@ -64,7 +87,6 @@
       color: #fff;
     }
 
-    /* Dark overlay for readability */
     .hero::before {
       content: "";
       position: absolute;
@@ -80,18 +102,18 @@
     }
 
     .hero h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       margin-bottom: 20px;
       color: #b89b2d;
     }
 
     .hero p {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       line-height: 1.6;
     }
 
     section {
-      padding: 60px 50px;
+      padding: 60px 30px;
     }
 
     section h2 {
@@ -182,6 +204,29 @@
     footer p {
       font-size: 0.9rem;
     }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
   </style>
 </head>
 <body>
@@ -195,6 +240,11 @@
         <li><a href="#team">Our Team</a></li>
         <li><a href="#contact">Contact Us</a></li>
       </ul>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </nav>
   </header>
 
@@ -245,5 +295,10 @@
     <p>&copy; 2025 Bioinformatics Club at Purdue University. All rights reserved.</p>
   </footer>
 
+  <script>
+    function toggleMenu() {
+      document.querySelector("nav ul").classList.toggle("show");
+    }
+  </script>
 </body>
 </html>
